@@ -1,6 +1,7 @@
 <template>
    <div v-show="numberOf > 1" class="cards__pagination">
-      <div v-for="n in numberOf" :key="n" class="cards__pagiNumber">0{{ n }}</div>
+      <div @click="pagiChoiceModule(n)" v-for="n in numberOf" :key="n" class="cards__pagiNumber">0{{ n }}</div>
+      <!-- <div @click="$emit('pagiChoice', n)" v-for="n in numberOf" :key="n" class="cards__pagiNumber">0{{ n }}</div> -->
 
       <div class="cards__pagiNumber">
          <svg xmlns="http://www.w3.org/2000/svg" width="53" height="52" viewBox="0 0 53 52" fill="none">
@@ -17,6 +18,11 @@ export default {
    name: 'CardsPagination',
    props: {
       numberOf: Number,
+   },
+   methods: {
+      pagiChoiceModule(num) {
+         this.$emit('pagiChoice', num);
+      }
    }
 
 }
